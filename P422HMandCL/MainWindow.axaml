@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="P422HMandCL.MainWindow"
+        Title="P422HMandCL">
+    <StackPanel
+        Width="400"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="120" Content="Введите имя: " />
+                <TextBox Name="FirstNameTextBox" Width="280" />
+            </StackPanel>
+            <TextBlock
+                Name="ErrorResultFirstName"
+                HorizontalAlignment="Center"
+                Foreground="Red" />
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="120" Content="Введите фамилию: " />
+                <TextBox Name="LastNameTextBox" Width="280" />
+            </StackPanel>
+            <TextBlock
+                Name="ErrorResultLastName"
+                HorizontalAlignment="Center"
+                Foreground="Red" />
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="120" Content="Введите отчество: " />
+                <TextBox Name="PatronymicTextBox" Width="280" />
+            </StackPanel>
+            <TextBlock
+                Name="ErrorResultPatronymic"
+                HorizontalAlignment="Center"
+                Foreground="Red" />
+        </StackPanel>
+        <Button
+            Width="400"
+            Click="Button_Click_SaveData"
+            Content="Сохранить" />
+        <StackPanel/>
+        <StackPanel>
+            <TextBox Name="RedacttextboBox" Width="200" Height="20" Margin="10,100,0,0"/>
+            <CheckBox Name="CheckBoxR" Margin="-10,-37,0, 0" Click="CheckBox_Checked"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
