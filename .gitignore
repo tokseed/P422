@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Общие для .NET
 
 bin/
@@ -218,3 +219,10 @@ docker-compose*.yml
 
 **/.env.*
  
+=======
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+>>>>>>> 6853547 (init)
