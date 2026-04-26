@@ -15,8 +15,7 @@ public partial class MainWindow : Window
 
     private void SquareRoot_Calculate(object sender, RoutedEventArgs e)
     {
-        // 1. Считываем данные. 
-        // В Avalonia Text может быть null, поэтому используем оператор ?? ""
+        
         bool isAParsed = double.TryParse(TextBoxA.Text ?? "", out double a);
         bool isBParsed = double.TryParse(TextBoxB.Text ?? "", out double b);
         bool isCParsed = double.TryParse(TextBoxС.Text ?? "", out double c);
@@ -26,7 +25,7 @@ public partial class MainWindow : Window
         if (!isAParsed || !isBParsed || !isCParsed)
         {
             resultMessage = "Ошибка: введите корректные числовые значения.";
-            // Вместо MessageBox в Avalonia часто используют открытие окна с этим текстом
+            
             var errorWin = new SecondWindow(resultMessage);
             errorWin.Show();
             return; 
@@ -67,9 +66,7 @@ public partial class MainWindow : Window
         // 3. Открываем новое окно и передаем результат
         var win = new SecondWindow(resultMessage);
     
-        // В Avalonia, если закрыть основное окно, приложение может закрыться.
-        // Если SquareRoot_Calculate находится в главном окне, используйте .Show(), 
-        // но учитывайте настройки ShutdownMode в App.axaml.cs
+
         win.Show();
     
         this.Close();

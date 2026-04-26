@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareEquation", "SquareEquation  \SquareEquation.csproj", "{4236C05E-40A5-47FA-B1B7-AB6ADF378B1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork2", "SquareEquation  \HomeWork2.csproj", "{4236C05E-40A5-47FA-B1B7-AB6ADF378B1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
