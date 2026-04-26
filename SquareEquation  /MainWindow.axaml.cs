@@ -15,7 +15,7 @@ public partial class MainWindow : Window
 
     private void SquareRoot_Calculate(object sender, RoutedEventArgs e)
     {
-        
+
         bool isAParsed = double.TryParse(TextBoxA.Text ?? "", out double a);
         bool isBParsed = double.TryParse(TextBoxB.Text ?? "", out double b);
         bool isCParsed = double.TryParse(TextBoxС.Text ?? "", out double c);
