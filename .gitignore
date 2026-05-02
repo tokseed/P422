@@ -1,228 +1,53 @@
-<<<<<<< HEAD
-# Общие для .NET
+# === Слияние и конфликты ===
+# Убедись, что ты удалил маркеры <<<<<<<, ======= и >>>>>>>
 
+# === Общие папки сборки .NET ===
 bin/
-
 obj/
+**/bin/
+**/obj/
+publish/
 
-**/obj/**
+# === Специфично для Avalonia ===
+# Игнорируем скомпилированные ресурсы и временные файлы превьюера
+**/Generated/
+**/obj/Avalonia/
+*.axaml.g.cs
 
-**/bin/**
+# === Среды разработки (IDE) ===
+# JetBrains Rider
+.idea/
+*.sln.iml
+*.idea_modules/
 
+# Visual Studio / VS Code
+.vs/
+.vscode/
 *.user
-
-*.userosscache
-
 *.suo
-
 *.userprefs
-
 *.pidb
 
-*.booproj
-
-*.svd
-
-*.pdb
-
-*.opendb
-
-*.VC.db
-
-*.vspx
-
-*.psess
-
-*.vsp
-
-*.sln.docstates
-
-# Файлы сборки .NET
-
-*.dll
-
-*.exe
-
-*.exe.config
-
-*.pdb
-
-*.cache
-
-*.nupkg
-
-*.snk
-
-# Rider/IntelliJ
-
-.idea/
-
-.idea_modules/
-
-*.sln.iml
-
-*.ipr
-
-*.iws
-
-# Visual Studio
-
-.vs/
-
-**/.vs/**
-
-.vscode/
-
-**/.vscode/**
-
-*.csproj.user
-
-*.csproj.user
-
-*launchSettings.json
-
-**/launchSettings.json
-
-# Avalonia specific
-
-**/compiled/**
-
-**/Generated/
-
-**/obj/Avalonia/**
-
-# Logs
-
-logs/
-
-*.log
-
-**/logs/**
-
-**/*.log
-
-# Test results
-
-TestResults/
-
-**/TestResults/**
-
-*.trx
-
-*.tmp
-
-# NuGet
-
+# === NuGet пакеты ===
+# Пакеты восстанавливаются автоматически, их не нужно пушить
 packages/
-
-*.nuget/
-
-**/packages/**
-
-project.lock.json
-
-project.fragment.lock.json
-
+node_modules/
 *.lock.json
+!global.json
 
-# Temp files
-
-tmp/
-
-temp/
-
-**/tmp/**
-
-**/temp/**
-
-*.tmp
-
-*.temp
-
-# OS generated files
-
+# === Системные файлы ===
+# Для macOS (очень важно для твоего случая)
 .DS_Store
-
-.DS_Store?
-
+.AppleDouble
+.LSOverride
 ._*
 
-.Spotlight-V100
-
-.Trashes
-
-ehthumbs.db
-
+# Для Windows
 Thumbs.db
-
-*.DS_Store
-
-**/.DS_Store
-
-# Windows
-
-$RECYCLE.BIN/
-
+ehthumbs.db
 desktop.ini
 
-*.cab
-
-*.msi
-
-*.msm
-
-*.msp
-
-# Linux
-
-*~
-
-.fuse_hidden*
-
-.directory
-
-.Trash-*
-
-.nfs*
-
-# MacOS
-
-.AppleDouble
-
-.LSOverride
-
-.TemporaryItems
-
-.VolumeIcon.icns
-
-.com.apple.timemachine.donotpresent
-
-# Docker
-
-.dockerignore
-
-Dockerfile
-
-docker-compose*.yml
-
-**/Dockerfile
-
-**/docker-compose*.yml
-
-# Environment files
-
-.env
-
-.env.*
-
-**/.env
-
-**/.env.*
- 
-=======
-bin/
-obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
->>>>>>> 6853547 (init)
+# === Логи и временные файлы ===
+*.log
+*.tmp
+*.temp
