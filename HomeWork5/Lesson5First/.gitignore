@@ -1,0 +1,53 @@
+# === Слияние и конфликты ===
+# Убедись, что ты удалил маркеры <<<<<<<, ======= и >>>>>>>
+
+# === Общие папки сборки .NET ===
+bin/
+obj/
+**/bin/
+**/obj/
+publish/
+
+# === Специфично для Avalonia ===
+# Игнорируем скомпилированные ресурсы и временные файлы превьюера
+**/Generated/
+**/obj/Avalonia/
+*.axaml.g.cs
+
+# === Среды разработки (IDE) ===
+# JetBrains Rider
+.idea/
+*.sln.iml
+*.idea_modules/
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
+*.pidb
+
+# === NuGet пакеты ===
+# Пакеты восстанавливаются автоматически, их не нужно пушить
+packages/
+node_modules/
+*.lock.json
+!global.json
+
+# === Системные файлы ===
+# Для macOS (очень важно для твоего случая)
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Для Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# === Логи и временные файлы ===
+*.log
+*.tmp
+*.temp

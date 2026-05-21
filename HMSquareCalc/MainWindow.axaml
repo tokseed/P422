@@ -1,0 +1,65 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="HMSquareCalc.MainWindow"
+        x:CompileBindings="False"
+        Width="420"
+        Height="320"
+        Title="Решение квадратного уравнения"
+        CanResize="False">
+    <Grid Margin="20"
+          RowDefinitions="Auto,Auto,Auto,Auto,Auto,*"
+          ColumnDefinitions="Auto,*">
+        <TextBlock Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   Margin="0,0,0,16"
+                   HorizontalAlignment="Center"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Text="ax² + bx + c = 0" />
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   Margin="0,0,12,10"
+                   VerticalAlignment="Center"
+                   Text="a =" />
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Margin="0,0,0,10"
+                 Text="{Binding CoefficientA}" />
+
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   Margin="0,0,12,10"
+                   VerticalAlignment="Center"
+                   Text="b =" />
+        <TextBox Grid.Row="2"
+                 Grid.Column="1"
+                 Margin="0,0,0,10"
+                 Text="{Binding CoefficientB}" />
+
+        <TextBlock Grid.Row="3"
+                   Grid.Column="0"
+                   Margin="0,0,12,10"
+                   VerticalAlignment="Center"
+                   Text="c =" />
+        <TextBox Grid.Row="3"
+                 Grid.Column="1"
+                 Margin="0,0,0,16"
+                 Text="{Binding CoefficientC}" />
+
+        <Button Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Width="120"
+                HorizontalAlignment="Center"
+                Command="{Binding SolveCommand}"
+                Content="Решить" />
+
+        <TextBox Grid.Row="5"
+                 Grid.ColumnSpan="2"
+                 Margin="0,16,0,0"
+                 IsReadOnly="True"
+                 Text="{Binding Result}"
+                 TextWrapping="Wrap"
+                 VerticalContentAlignment="Center" />
+    </Grid>
+</Window>
