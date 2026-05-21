@@ -1,0 +1,79 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="PracticalTask.MainWindow"
+        Width="920"
+        Height="620"
+        MinWidth="920"
+        MinHeight="620"
+        Title="CRUD Книги"
+        mc:Ignorable="d">
+    <Grid Margin="16" RowDefinitions="*,Auto,Auto">
+        <Border Grid.Row="0" Padding="12" BorderBrush="Gray" BorderThickness="1" CornerRadius="8">
+            <StackPanel Spacing="10">
+                <TextBlock FontSize="18" FontWeight="SemiBold" Text="Список книг" />
+
+                <Border Background="#F3F4F6" CornerRadius="6" Padding="10">
+                    <Grid ColumnDefinitions="3*,3*,Auto,2*">
+                        <TextBlock Grid.Column="0" FontWeight="Bold" Text="Название" />
+                        <TextBlock Grid.Column="1" FontWeight="Bold" Text="Автор" />
+                        <TextBlock Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center" Text="Год" />
+                        <TextBlock Grid.Column="3" FontWeight="Bold" Text="Жанр" />
+                    </Grid>
+                </Border>
+
+                <ListBox ItemsSource="{Binding Books}"
+                         SelectedItem="{Binding SelectedBook}"
+                         Height="280">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="10" BorderBrush="#D1D5DB" BorderThickness="0,0,0,1">
+                                <Grid ColumnDefinitions="3*,3*,Auto,2*">
+                                    <TextBlock Grid.Column="0" Text="{Binding Title}" />
+                                    <TextBlock Grid.Column="1" Text="{Binding Author}" />
+                                    <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{Binding PublishYear}" />
+                                    <TextBlock Grid.Column="3" Text="{Binding Genre}" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Margin="0,16,0,0" Padding="16" BorderBrush="Gray" BorderThickness="1" CornerRadius="8">
+            <Grid ColumnDefinitions="Auto,250,24,Auto,250" RowDefinitions="Auto,Auto,Auto">
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,10,10" VerticalAlignment="Center" Text="Название:" />
+                <TextBox Grid.Row="0" Grid.Column="1" Margin="0,0,0,10" Text="{Binding Title}" />
+
+                <TextBlock Grid.Row="0" Grid.Column="3" Margin="0,0,10,10" VerticalAlignment="Center" Text="Автор:" />
+                <TextBox Grid.Row="0" Grid.Column="4" Margin="0,0,0,10" Text="{Binding Author}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,10,10" VerticalAlignment="Center" Text="Год:" />
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" Text="{Binding PublishYearText}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="3" Margin="0,0,10,10" VerticalAlignment="Center" Text="Жанр:" />
+                <TextBox Grid.Row="1" Grid.Column="4" Margin="0,0,0,10" Text="{Binding Genre}" />
+
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="5" Margin="0,8,0,0" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8">
+                    <Button Width="120" Command="{Binding AddCommand}" Content="Добавить" />
+                    <Button Width="120" Command="{Binding UpdateCommand}" Content="Обновить" />
+                    <Button Width="120" Command="{Binding DeleteCommand}" Content="Удалить" />
+                    <Button Width="120" Command="{Binding ClearCommand}" Content="Очистить" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2"
+                Margin="0,16,0,0"
+                Padding="12"
+                Background="#FFF4E5"
+                BorderBrush="#F59E0B"
+                BorderThickness="1"
+                CornerRadius="8"
+                IsVisible="{Binding HasStatusMessage}">
+            <TextBlock Text="{Binding StatusMessage}" TextWrapping="Wrap" />
+        </Border>
+    </Grid>
+</Window>
