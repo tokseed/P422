@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="HomeWork3.MainWindow"
+        
+        xmlns:vm="using:HomeWork3.ViewModel"
+        Width="400"
+        Height="500"
+        WindowStartupLocation="CenterScreen"
+        x:DataType="vm:Calculate"
+        Title="Калькулятор">
+
+    <DockPanel Margin="10">
+        <TextBlock DockPanel.Dock="Top" 
+                   Text="{Binding Print}" 
+                   FontSize="16" 
+                   Foreground="Gray" 
+                   HorizontalAlignment="Right"
+                   Margin="0,0,10,0"/>
+
+        <TextBox DockPanel.Dock="Top" 
+                 Text="{Binding Display}"
+                 FontSize="32"
+                 IsReadOnly="True"
+                 HorizontalContentAlignment="Right"/>
+        
+        <UniformGrid Columns="4" Rows="5" Margin="0,5,0,0">
+
+            <Button Content="1" CommandParameter="1" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5" />
+            <Button Content="2" CommandParameter="2" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <Button Content="3" CommandParameter="3" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <Button Content="/" CommandParameter="/" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            
+            <Button Content="4" CommandParameter="4" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <Button Content="5" CommandParameter="5" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <Button Content="6" CommandParameter="6" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <Button Content="*" CommandParameter="*" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            
+            <Button Content="7" CommandParameter="7" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <Button Content="8" CommandParameter="8" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <Button Content="9" CommandParameter="9" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <Button Content="-" CommandParameter="-" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            
+            <Button Content="0" CommandParameter="0" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <Button Content="." CommandParameter="." Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            <Button Content="=" CommandParameter="=" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5" Background="LightGreen"/>
+            <Button Content="+" CommandParameter="+" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5"/>
+            
+            <Button Content="C" CommandParameter="C" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5" Width="125" Background="LightCoral"/>
+            <Border />
+            <Button Content="+/-" CommandParameter="+/-" Command="{Binding OnClickButton}"  FontSize="16" FontWeight="Bold" Margin="5" Background="LightGray"/>
+            <Button Content="%" CommandParameter="%" Command="{Binding OnClickButton}" FontSize="20" FontWeight="Bold" Margin="5" Background="LightGray"/>
+            
+        </UniformGrid>
+    </DockPanel>
+</Window>
