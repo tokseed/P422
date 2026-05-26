@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="HomeWork8.MainWindow"
+        Width="1080"
+        Height="640"
+        MinWidth="980"
+        MinHeight="600"
+        Title="Shop Users"
+        mc:Ignorable="d">
+    <Grid Margin="16" RowDefinitions="Auto,*,Auto">
+        <Border Grid.Row="0"
+                Padding="16"
+                Background="#EEF6FF"
+                BorderBrush="#8CB4FF"
+                BorderThickness="1"
+                CornerRadius="10">
+            <StackPanel Spacing="10">
+                <TextBlock FontSize="22" FontWeight="SemiBold" Text="База данных Shop" />
+                <TextBlock Text="Приложение создаёт таблицу Users и выполняет SELECT-запрос через Microsoft.Data.SqlClient." TextWrapping="Wrap" />
+                <SelectableTextBlock FontFamily="Cascadia Code, Consolas, monospace"
+                                     FontSize="13"
+                                     Text="{Binding QueryText}"
+                                     TextWrapping="Wrap" />
+                <Button Width="180"
+                        HorizontalAlignment="Left"
+                        Command="{Binding RefreshCommand}"
+                        Content="Выполнить SELECT" />
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Margin="0,16,0,0" Padding="12" BorderBrush="Gray" BorderThickness="1" CornerRadius="8">
+            <StackPanel Spacing="10">
+                <TextBlock FontSize="18" FontWeight="SemiBold" Text="Таблица Users" />
+
+                <Border Background="#F3F4F6" CornerRadius="6" Padding="10">
+                    <Grid ColumnDefinitions="Auto,2*,2*,3*,2*,2*">
+                        <TextBlock Grid.Column="0" Width="60" FontWeight="Bold" Text="ID" />
+                        <TextBlock Grid.Column="1" FontWeight="Bold" Text="Имя" />
+                        <TextBlock Grid.Column="2" FontWeight="Bold" Text="Фамилия" />
+                        <TextBlock Grid.Column="3" FontWeight="Bold" Text="Email" />
+                        <TextBlock Grid.Column="4" FontWeight="Bold" Text="Город" />
+                        <TextBlock Grid.Column="5" FontWeight="Bold" Text="Создан" />
+                    </Grid>
+                </Border>
+
+                <ListBox ItemsSource="{Binding Users}" Height="360">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="10" BorderBrush="#D1D5DB" BorderThickness="0,0,0,1">
+                                <Grid ColumnDefinitions="Auto,2*,2*,3*,2*,2*">
+                                    <TextBlock Grid.Column="0" Width="60" Text="{Binding Id}" />
+                                    <TextBlock Grid.Column="1" Text="{Binding FirstName}" />
+                                    <TextBlock Grid.Column="2" Text="{Binding LastName}" />
+                                    <TextBlock Grid.Column="3" Text="{Binding Email}" />
+                                    <TextBlock Grid.Column="4" Text="{Binding City}" />
+                                    <TextBlock Grid.Column="5" Text="{Binding CreatedAt, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2"
+                Margin="0,16,0,0"
+                Padding="12"
+                Background="#FFF4E5"
+                BorderBrush="#F59E0B"
+                BorderThickness="1"
+                CornerRadius="8"
+                IsVisible="{Binding HasStatusMessage}">
+            <TextBlock Text="{Binding StatusMessage}" TextWrapping="Wrap" />
+        </Border>
+    </Grid>
+</Window>
