@@ -1,4 +1,6 @@
+using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using PracticalTask.Helpers;
 using PracticalTask.Models;
@@ -16,6 +18,7 @@ public class MainViewModel : BaseViewModel
     private string _publishYearText = string.Empty;
     private string _genre = string.Empty;
     private string _statusMessage = string.Empty;
+    private string _searchText = string.Empty;
 
     public MainViewModel()
     {
@@ -23,11 +26,41 @@ public class MainViewModel : BaseViewModel
         UpdateCommand = new RelayCommand(_ => UpdateBook(), _ => SelectedBook != null);
         DeleteCommand = new RelayCommand(_ => DeleteBook(), _ => SelectedBook != null);
         ClearCommand = new RelayCommand(_ => ClearFields());
+        ClearSearchCommand = new RelayCommand(_ => ClearSearch());
 
         TryInitializeDatabase();
     }
 
-    public ObservableCollection<Book> Books { get; } = [];
+    // Оригинальная коллекция (только для внутреннего использования)
+    private ObservableCollection<Book> _allBooks = [];
+    
+    // Отфильтрованная коллекция для отображения в UI
+    public ObservableCollection<Book> FilteredBooks { get; } = [];
+
+    // Свойство для поиска
+    public string SearchText
+    {
+        get => _searchText;
+        set
+        {
+            if (SetProperty(ref _searchText, value))
+            {
+                UpdateFilteredBooks();
+                OnPropertyChanged(nameof(IsSearchActive));
+                OnPropertyChanged(nameof(SearchResultText));
+            }
+        }
+    }
+
+    // Активен ли поиск (для отображения кнопки очистки и статистики)
+    public bool IsSearchActive => !string.IsNullOrWhiteSpace(SearchText);
+
+    // Текст статистики поиска
+    public string SearchResultText => IsSearchActive ? 
+        $"Найдено: {FilteredBooks.Count} из {_allBooks.Count}" : "";
+
+    // Команда очистки поиска
+    public ICommand ClearSearchCommand { get; }
 
     public ICommand AddCommand { get; }
     public ICommand UpdateCommand { get; }
@@ -96,12 +129,56 @@ public class MainViewModel : BaseViewModel
 
     private void LoadBooks()
     {
-        Books.Clear();
+        _allBooks.Clear();
+        FilteredBooks.Clear();
 
         foreach (var book in _databaseService.GetBooks())
         {
-            Books.Add(book);
+            _allBooks.Add(book);
         }
+        
+        UpdateFilteredBooks();
+    }
+
+    // Метод фильтрации книг
+    private void UpdateFilteredBooks()
+    {
+        FilteredBooks.Clear();
+        
+        if (string.IsNullOrWhiteSpace(SearchText))
+        {
+            // Если поиск пуст - показываем все книги
+            foreach (var book in _allBooks)
+                FilteredBooks.Add(book);
+        }
+        else
+        {
+            // Ищем по всем полям (название, автор, жанр, год)
+            var searchLower = SearchText.ToLower();
+            var filtered = _allBooks.Where(book => 
+                book.Title.ToLower().Contains(searchLower) ||
+                book.Author.ToLower().Contains(searchLower) ||
+                book.Genre.ToLower().Contains(searchLower) ||
+                book.PublishYear.ToString().Contains(SearchText) // поиск по году
+            ).ToList();
+            
+            foreach (var book in filtered)
+                FilteredBooks.Add(book);
+        }
+        
+        OnPropertyChanged(nameof(SearchResultText));
+        
+        // Если выбранная книга не входит в результаты поиска - снимаем выделение
+        if (SelectedBook != null && !FilteredBooks.Contains(SelectedBook))
+        {
+            SelectedBook = null;
+        }
+    }
+
+    // Очистка поиска
+    private void ClearSearch()
+    {
+        SearchText = string.Empty;
     }
 
     private void AddBook()
@@ -120,7 +197,7 @@ public class MainViewModel : BaseViewModel
             }
 
             _databaseService.AddBook(book);
-            LoadBooks();
+            LoadBooks(); // Теперь LoadBooks вызывает UpdateFilteredBooks
             ClearFields();
             StatusMessage = "Книга успешно добавлена.";
         }
@@ -153,7 +230,7 @@ public class MainViewModel : BaseViewModel
 
             book.Id = SelectedBook.Id;
             _databaseService.UpdateBook(book);
-            LoadBooks();
+            LoadBooks(); // Теперь LoadBooks вызывает UpdateFilteredBooks
             ClearFields();
             StatusMessage = "Книга успешно обновлена.";
         }
@@ -180,7 +257,7 @@ public class MainViewModel : BaseViewModel
             }
 
             _databaseService.DeleteBook(SelectedBook.Id);
-            LoadBooks();
+            LoadBooks(); // Теперь LoadBooks вызывает UpdateFilteredBooks
             ClearFields();
             StatusMessage = "Книга успешно удалена.";
         }

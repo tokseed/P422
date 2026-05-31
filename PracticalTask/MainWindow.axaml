@@ -9,10 +9,40 @@
         MinHeight="620"
         Title="CRUD Книги"
         mc:Ignorable="d">
+    
     <Grid Margin="16" RowDefinitions="*,Auto,Auto">
         <Border Grid.Row="0" Padding="12" BorderBrush="Gray" BorderThickness="1" CornerRadius="8">
             <StackPanel Spacing="10">
-                <TextBlock FontSize="18" FontWeight="SemiBold" Text="Список книг" />
+                <Grid ColumnDefinitions="*,Auto">
+                    <TextBlock Grid.Column="0" FontSize="18" FontWeight="SemiBold" Text="Список книг" />
+                    
+                    <!-- Поисковая строка -->
+                    <Border Grid.Column="1" 
+                            Background="White" 
+                            BorderBrush="#D1D5DB" 
+                            BorderThickness="1" 
+                            CornerRadius="6" 
+                            Padding="8,4">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <TextBlock Grid.Column="0" Text="🔍" VerticalAlignment="Center" Margin="0,0,5,0" Opacity="0.6"/>
+                            <TextBox Grid.Column="1" 
+                                     Width="200"
+                                     Watermark="Поиск по названию, автору, жанру..." 
+                                     Text="{Binding SearchText, Mode=TwoWay}"
+                                     BorderThickness="0"
+                                     Background="Transparent"/>
+                            <Button Grid.Column="2" 
+                                    Command="{Binding ClearSearchCommand}"
+                                    IsVisible="{Binding IsSearchActive}"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Cursor="Hand"
+                                    Width="20">
+                                <TextBlock Text="✖" FontSize="12" Foreground="Gray"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
 
                 <Border Background="#F3F4F6" CornerRadius="6" Padding="10">
                     <Grid ColumnDefinitions="3*,3*,Auto,2*">
@@ -23,7 +53,8 @@
                     </Grid>
                 </Border>
 
-                <ListBox ItemsSource="{Binding Books}"
+                <!-- ВАЖНО: ItemsSource привязан к FilteredBooks, а не к Books -->
+                <ListBox ItemsSource="{Binding FilteredBooks}"
                          SelectedItem="{Binding SelectedBook}"
                          Height="280">
                     <ListBox.ItemTemplate>
@@ -39,9 +70,17 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                
+                <!-- Статистика поиска -->
+                <TextBlock IsVisible="{Binding IsSearchActive}"
+                           Text="{Binding SearchResultText}"
+                           FontSize="11"
+                           Foreground="Gray"
+                           HorizontalAlignment="Right"/>
             </StackPanel>
         </Border>
 
+        <!-- Остальные элементы остаются без изменений -->
         <Border Grid.Row="1" Margin="0,16,0,0" Padding="16" BorderBrush="Gray" BorderThickness="1" CornerRadius="8">
             <Grid ColumnDefinitions="Auto,250,24,Auto,250" RowDefinitions="Auto,Auto,Auto">
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,10,10" VerticalAlignment="Center" Text="Название:" />
