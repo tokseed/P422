@@ -1,0 +1,14 @@
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/bin/Debug/net10.0/СинхронизацияПотоков
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/bin/Debug/net10.0/СинхронизацияПотоков.deps.json
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/bin/Debug/net10.0/СинхронизацияПотоков.runtimeconfig.json
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/bin/Debug/net10.0/СинхронизацияПотоков.dll
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/bin/Debug/net10.0/СинхронизацияПотоков.pdb
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/obj/Debug/net10.0/СинхронизацияПотоков.GeneratedMSBuildEditorConfig.editorconfig
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/obj/Debug/net10.0/СинхронизацияПотоков.AssemblyInfoInputs.cache
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/obj/Debug/net10.0/СинхронизацияПотоков.AssemblyInfo.cs
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/obj/Debug/net10.0/СинхронизацияПотоков.csproj.CoreCompileInputs.cache
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/obj/Debug/net10.0/СинхронизацияПотоков.dll
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/obj/Debug/net10.0/refint/СинхронизацияПотоков.dll
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/obj/Debug/net10.0/СинхронизацияПотоков.pdb
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/obj/Debug/net10.0/СинхронизацияПотоков.genruntimeconfig.cache
+/Users/pasavoronkov/Documents/topacademy/C#/Avalonia/ СинхронизацияПотоков/ СинхронизацияПотоков/obj/Debug/net10.0/ref/СинхронизацияПотоков.dll
