@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Task2MathApp</AssemblyName>
+  </PropertyGroup>
+
+  <!-- DLL собирается под Windows (win-x64). При публикации на Windows
+       добавьте: <RuntimeIdentifier>win-x64</RuntimeIdentifier> -->
+
+
+  <!-- Автоматически копируем собранную DLL рядом с exe,
+       если она лежит в папке Libs относительно проекта. -->
+  <ItemGroup Condition="Exists('Libs/MathLib.dll')">
+    <None Include="Libs/MathLib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
