@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Factorial.Protocol/Factorial.Protocol.csproj" Id="a1f0c1d2-0001-4b1a-8c2d-000000000001" />
+  <Project Path="Factorial.Server/Factorial.Server.csproj" Id="a1f0c1d2-0002-4b1a-8c2d-000000000002" />
+  <Project Path="Factorial.Client/Factorial.Client.csproj" Id="a1f0c1d2-0003-4b1a-8c2d-000000000003" />
+</Solution>
